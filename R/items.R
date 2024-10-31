@@ -46,7 +46,7 @@ get_items <- function(client, limit = 10, start = 0, query = NULL,
   params <- params[!sapply(params, is.null)]
   
   response <- make_request(client, endpoint, query = params)
-  dplyr::as_tibble(response)
+  response
 }
 
 #' Get total number of top-level items in the library
@@ -91,7 +91,7 @@ num_top_items <- function(client) {
 num_all_items <- function(client) {
   endpoint <- sprintf("/%s/%s/items", client$library_type, client$library_id)
   response <- make_request(client, endpoint, query = list(limit = 1))
-  as.integer(response)
+  response
 }
 
 
@@ -121,7 +121,7 @@ item <- function(client, item_key) {
                      item_key)
   
   response <- make_request(client, endpoint)
-  dplyr::as_tibble(list(response))
+  response
 }
 
 #' Get child items of a specific item
@@ -149,7 +149,7 @@ children <- function(client, item_key) {
                      item_key)
   
   response <- make_request(client, endpoint)
-  dplyr::as_tibble(response)
+  response
 }
 
 #' Get items in trash
@@ -180,5 +180,5 @@ trash <- function(client, limit = 10, start = 0) {
   )
   
   response <- make_request(client, endpoint, query = params)
-  dplyr::as_tibble(response)
+  response
 } 
