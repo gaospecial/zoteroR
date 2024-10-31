@@ -79,13 +79,17 @@ get_last_modified_version <- function(client) {
   # Make a minimal request to get the version header
   response <- make_request(client, endpoint, query = list(limit = 1))
   
-  # Extract version from response headers
-  version <- response$headers[["last-modified-version"]]
-  if (is.null(version)) {
-    return(0)
+  # Extract version from response
+  if (!is.null(response$headers) && !is.null(response$headers[["last-modified-version"]])) {
+    return(as.integer(response$headers[["last-modified-version"]]))
   }
   
-  as.integer(version)
+  # If we can't get the version from headers, try to get it from the first item
+  if (length(response) > 0 && !is.null(response[[1]]$version)) {
+    return(as.integer(response[[1]]$version))
+  }
+  
+  return(0)
 }
 
 #' Get deleted content since a specific version

@@ -102,12 +102,6 @@ make_request <- function(client, endpoint, method = "GET",
   # Check for errors
   httr::stop_for_status(response)
   
-  # For count functions, return the total directly
-  if (!is.null(query$limit) && query$limit == 1 && 
-      !is.null(response$headers[["total-results"]])) {
-    return(as.integer(response$headers[["total-results"]]))
-  }
-  
   # Handle response based on format
   if (format == "json") {
     content <- httr::content(response, "text", encoding = "UTF-8")
