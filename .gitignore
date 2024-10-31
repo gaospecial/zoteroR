@@ -9,3 +9,4 @@ pyzotero
 logs/
 __pycache__/
 docs
+man
