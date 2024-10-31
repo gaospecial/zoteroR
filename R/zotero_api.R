@@ -53,7 +53,7 @@ zotero_client <- function(library_id,
 #' @keywords internal
 make_request <- function(client, endpoint, method = "GET", 
                         query = list(), body = NULL, 
-                        format = "json") {
+                        format = "json", ...) {
   url <- file.path(client$base_url, endpoint)
   
   # Add default query parameters
@@ -74,7 +74,8 @@ make_request <- function(client, endpoint, method = "GET",
   if (!is.null(client$api_key)) {
     api_headers <- c(
       api_headers,
-      httr::add_headers("Authorization" = paste("Bearer", client$api_key))
+      httr::add_headers("Authorization" = paste("Bearer", client$api_key)),
+      httr::add_headers(...)
     )
   }
   

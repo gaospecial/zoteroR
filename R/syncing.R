@@ -153,9 +153,9 @@ update_item_version <- function(client, item_key, data, version) {
   )
   
   make_request(client, endpoint, 
-              method = "PATCH", 
-              body = data,
-              headers = headers)
+               method = "PATCH", 
+               body = data,
+               headers)
 }
 
 #' Update multiple items with version check
@@ -190,5 +190,5 @@ update_items_version <- function(client, items, version) {
   make_request(client, endpoint, 
               method = "POST", 
               body = items,
-              headers = headers)
+              headers)
 } 
