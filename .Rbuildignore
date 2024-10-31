@@ -2,3 +2,7 @@
 ^\.Rproj\.user$
 pyzotero
 ^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

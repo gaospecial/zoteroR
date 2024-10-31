@@ -8,3 +8,4 @@ pyzotero
 .env
 logs/
 __pycache__/
+docs
