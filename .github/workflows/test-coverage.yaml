@@ -15,6 +15,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
       ZOTERO_USER_ID: ${{ secrets.ZOTERO_USER_ID }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
       - uses: actions/checkout@v3
@@ -31,6 +32,7 @@ jobs:
       - name: Test coverage
         run: |
           covr::codecov(
+            token = Sys.getenv("CODECOV_TOKEN"),
             quiet = FALSE,
             clean = FALSE,
             install_path = file.path(Sys.getenv("RUNNER_TEMP"), "package")
