@@ -107,7 +107,7 @@ make_request <- function(client, endpoint, method = "GET",
   if (format == "json") {
     content <- httr::content(response, "text", encoding = "UTF-8")
     if (content != "") {
-      return(jsonlite::fromJSON(content, simplifyVector = FALSE))
+      return(jsonlite::fromJSON(content))
     }
     return(NULL)
   }
