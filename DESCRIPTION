@@ -1,8 +1,7 @@
 Package: zoteroR
 Title: R Interface to Zotero API
 Version: 0.1.0
-Authors@R: 
-    person("Your", "Name", , "your.email@example.com", role = c("aut", "cre"))
+Authors@R: person("Chun-Hui","Gao", email="gaospecial@gmail.com", role=c("aut","cre"), comment=c(ORCID = "0000-0002-1445-7939"))
 Description: An R package that provides interface to Zotero API. It allows users to 
     interact with Zotero libraries, including reading and writing items, 
     collections, and tags.
