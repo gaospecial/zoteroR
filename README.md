@@ -1,12 +1,24 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# zoteroR
+# Zotero in R
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/gaospecial/zoteroR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/gaospecial/zoteroR?branch=main)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/zoteroR)](https://CRAN.R-project.org/package=zoteroR)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/gaospecial/zoteroR/workflows/R-CMD-check/badge.svg)](https://github.com/gaospecial/zoteroR/actions)
+[![](https://img.shields.io/github/languages/code-size/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR)
+[![](https://img.shields.io/github/last-commit/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR/commits/main)
 <!-- badges: end -->
 
-The goal of zoteroR is to provide a convenient interface to the Zotero
+The goal of `zoteroR` is to provide a convenient interface to the Zotero
 API in R.
 
 ## Installation
@@ -40,6 +52,10 @@ client <- zotero_client(
 ``` r
 # Get 10 items
 items <- get_items(client, limit = 10)
+dim(items)
+#> [1] 10  6
+colnames(items)
+#> [1] "key"     "version" "library" "links"   "meta"    "data"
 ```
 
 ### 获取项目数量
@@ -47,405 +63,11 @@ items <- get_items(client, limit = 10)
 ``` r
 # Get total number of top-level items in the library
 num_top_items(client)
-#> [[1]]
-#> [[1]]$key
-#> [1] "Z5NE7NV2"
-#> 
-#> [[1]]$version
-#> [1] 21936
-#> 
-#> [[1]]$library
-#> [[1]]$library$type
-#> [1] "user"
-#> 
-#> [[1]]$library$id
-#> [1] 62236
-#> 
-#> [[1]]$library$name
-#> [1] "gaoch"
-#> 
-#> [[1]]$library$links
-#> [[1]]$library$links$alternate
-#> [[1]]$library$links$alternate$href
-#> [1] "https://www.zotero.org/springgao"
-#> 
-#> [[1]]$library$links$alternate$type
-#> [1] "text/html"
-#> 
-#> 
-#> 
-#> 
-#> [[1]]$links
-#> [[1]]$links$self
-#> [[1]]$links$self$href
-#> [1] "https://api.zotero.org/users/62236/items/Z5NE7NV2"
-#> 
-#> [[1]]$links$self$type
-#> [1] "application/json"
-#> 
-#> 
-#> [[1]]$links$alternate
-#> [[1]]$links$alternate$href
-#> [1] "https://www.zotero.org/springgao/items/Z5NE7NV2"
-#> 
-#> [[1]]$links$alternate$type
-#> [1] "text/html"
-#> 
-#> 
-#> 
-#> [[1]]$meta
-#> [[1]]$meta$creatorSummary
-#> [1] "Raglin et al."
-#> 
-#> [[1]]$meta$parsedDate
-#> [1] "2024-09-05"
-#> 
-#> [[1]]$meta$numChildren
-#> [1] 2
-#> 
-#> 
-#> [[1]]$data
-#> [[1]]$data$key
-#> [1] "Z5NE7NV2"
-#> 
-#> [[1]]$data$version
-#> [1] 21936
-#> 
-#> [[1]]$data$itemType
-#> [1] "journalArticle"
-#> 
-#> [[1]]$data$title
-#> [1] "Manipulating the Maize (Zea mays) Microbiome"
-#> 
-#> [[1]]$data$creators
-#> [[1]]$data$creators[[1]]
-#> [[1]]$data$creators[[1]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[1]]$firstName
-#> [1] "Sierra S."
-#> 
-#> [[1]]$data$creators[[1]]$lastName
-#> [1] "Raglin"
-#> 
-#> 
-#> [[1]]$data$creators[[2]]
-#> [[1]]$data$creators[[2]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[2]]$firstName
-#> [1] "Alonso"
-#> 
-#> [[1]]$data$creators[[2]]$lastName
-#> [1] "Favela"
-#> 
-#> 
-#> [[1]]$data$creators[[3]]
-#> [[1]]$data$creators[[3]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[3]]$firstName
-#> [1] "Daniel"
-#> 
-#> [[1]]$data$creators[[3]]$lastName
-#> [1] "Laspisa"
-#> 
-#> 
-#> [[1]]$data$creators[[4]]
-#> [[1]]$data$creators[[4]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[4]]$firstName
-#> [1] "Jason G."
-#> 
-#> [[1]]$data$creators[[4]]$lastName
-#> [1] "Wallace"
-#> 
-#> 
-#> 
-#> [[1]]$data$abstractNote
-#> [1] "Maize (Zea mays) is a multifaceted cereal grass used globally for nutrition, animal feed, food processing, and biofuels, and a model system in genetics research. Studying the maize microbiome sometimes requires its manipulation to identify the contributions of specific taxa and ecological traits (i.e., diversity, richness, network structure) to maize growth and physiology. Due to regulatory constraints on applying engineered microorganisms in field settings, greenhouse-based experimentation is often the first step for understanding the contribution of root-associated microbiota—whether natural or engineered—to plant phenotypes. In this protocol, we describe methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant. The protocol involves removal of the native seed microbiome followed by inoculation of new microorganisms; separate protocols are provided for inoculations from pure culture, from soil slurry, or by mixing in live soil. These protocols cover the most common methods for manipulating the maize microbiome in soil-grown plants in the greenhouse. The methods outlined will ultimately result in rhizosphere microbial assemblages with varying degrees of microbial diversity, ranging from low diversity (individual strain and synthetic community [SynCom] inoculation) to high diversity (percent live inoculation), with the slurry inoculation method representing an “intermediate diversity” treatment."
-#> 
-#> [[1]]$data$publicationTitle
-#> [1] "Cold Spring Harbor Protocols"
-#> 
-#> [[1]]$data$volume
-#> [1] ""
-#> 
-#> [[1]]$data$issue
-#> [1] ""
-#> 
-#> [[1]]$data$pages
-#> [1] ""
-#> 
-#> [[1]]$data$date
-#> [1] "2024-09-05"
-#> 
-#> [[1]]$data$series
-#> [1] ""
-#> 
-#> [[1]]$data$seriesTitle
-#> [1] ""
-#> 
-#> [[1]]$data$seriesText
-#> [1] ""
-#> 
-#> [[1]]$data$journalAbbreviation
-#> [1] "Cold Spring Harb Protoc"
-#> 
-#> [[1]]$data$language
-#> [1] "en"
-#> 
-#> [[1]]$data$DOI
-#> [1] "10.1101/pdb.prot108584"
-#> 
-#> [[1]]$data$ISSN
-#> [1] "1940-3402, 1559-6095"
-#> 
-#> [[1]]$data$shortTitle
-#> [1] ""
-#> 
-#> [[1]]$data$url
-#> [1] "http://cshprotocols.cshlp.org/content/early/2024/09/05/pdb.prot108584"
-#> 
-#> [[1]]$data$accessDate
-#> [1] "2024-09-19T04:03:28Z"
-#> 
-#> [[1]]$data$archive
-#> [1] ""
-#> 
-#> [[1]]$data$archiveLocation
-#> [1] ""
-#> 
-#> [[1]]$data$libraryCatalog
-#> [1] "cshprotocols.cshlp.org"
-#> 
-#> [[1]]$data$callNumber
-#> [1] ""
-#> 
-#> [[1]]$data$rights
-#> [1] ""
-#> 
-#> [[1]]$data$extra
-#> [1] "Publisher: Cold Spring Harbor Laboratory Press\nPMID: 39237453\nTLDR: Methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant and resulting in rhizosphere microbial assemblages with varying degrees of microbial diversity are described.\ntitleTranslation: 操控玉米微生物群系"
-#> 
-#> [[1]]$data$tags
-#> list()
-#> 
-#> [[1]]$data$collections
-#> [[1]]$data$collections[[1]]
-#> [1] "NVIWASQD"
-#> 
-#> 
-#> [[1]]$data$relations
-#> named list()
-#> 
-#> [[1]]$data$dateAdded
-#> [1] "2024-09-19T04:03:28Z"
-#> 
-#> [[1]]$data$dateModified
-#> [1] "2024-10-31T05:55:35Z"
+#> [1] 2136
 
 # Get total number of items in a collection
 num_all_items(client)
-#> [[1]]
-#> [[1]]$key
-#> [1] "Z5NE7NV2"
-#> 
-#> [[1]]$version
-#> [1] 21936
-#> 
-#> [[1]]$library
-#> [[1]]$library$type
-#> [1] "user"
-#> 
-#> [[1]]$library$id
-#> [1] 62236
-#> 
-#> [[1]]$library$name
-#> [1] "gaoch"
-#> 
-#> [[1]]$library$links
-#> [[1]]$library$links$alternate
-#> [[1]]$library$links$alternate$href
-#> [1] "https://www.zotero.org/springgao"
-#> 
-#> [[1]]$library$links$alternate$type
-#> [1] "text/html"
-#> 
-#> 
-#> 
-#> 
-#> [[1]]$links
-#> [[1]]$links$self
-#> [[1]]$links$self$href
-#> [1] "https://api.zotero.org/users/62236/items/Z5NE7NV2"
-#> 
-#> [[1]]$links$self$type
-#> [1] "application/json"
-#> 
-#> 
-#> [[1]]$links$alternate
-#> [[1]]$links$alternate$href
-#> [1] "https://www.zotero.org/springgao/items/Z5NE7NV2"
-#> 
-#> [[1]]$links$alternate$type
-#> [1] "text/html"
-#> 
-#> 
-#> 
-#> [[1]]$meta
-#> [[1]]$meta$creatorSummary
-#> [1] "Raglin et al."
-#> 
-#> [[1]]$meta$parsedDate
-#> [1] "2024-09-05"
-#> 
-#> [[1]]$meta$numChildren
-#> [1] 2
-#> 
-#> 
-#> [[1]]$data
-#> [[1]]$data$key
-#> [1] "Z5NE7NV2"
-#> 
-#> [[1]]$data$version
-#> [1] 21936
-#> 
-#> [[1]]$data$itemType
-#> [1] "journalArticle"
-#> 
-#> [[1]]$data$title
-#> [1] "Manipulating the Maize (Zea mays) Microbiome"
-#> 
-#> [[1]]$data$creators
-#> [[1]]$data$creators[[1]]
-#> [[1]]$data$creators[[1]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[1]]$firstName
-#> [1] "Sierra S."
-#> 
-#> [[1]]$data$creators[[1]]$lastName
-#> [1] "Raglin"
-#> 
-#> 
-#> [[1]]$data$creators[[2]]
-#> [[1]]$data$creators[[2]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[2]]$firstName
-#> [1] "Alonso"
-#> 
-#> [[1]]$data$creators[[2]]$lastName
-#> [1] "Favela"
-#> 
-#> 
-#> [[1]]$data$creators[[3]]
-#> [[1]]$data$creators[[3]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[3]]$firstName
-#> [1] "Daniel"
-#> 
-#> [[1]]$data$creators[[3]]$lastName
-#> [1] "Laspisa"
-#> 
-#> 
-#> [[1]]$data$creators[[4]]
-#> [[1]]$data$creators[[4]]$creatorType
-#> [1] "author"
-#> 
-#> [[1]]$data$creators[[4]]$firstName
-#> [1] "Jason G."
-#> 
-#> [[1]]$data$creators[[4]]$lastName
-#> [1] "Wallace"
-#> 
-#> 
-#> 
-#> [[1]]$data$abstractNote
-#> [1] "Maize (Zea mays) is a multifaceted cereal grass used globally for nutrition, animal feed, food processing, and biofuels, and a model system in genetics research. Studying the maize microbiome sometimes requires its manipulation to identify the contributions of specific taxa and ecological traits (i.e., diversity, richness, network structure) to maize growth and physiology. Due to regulatory constraints on applying engineered microorganisms in field settings, greenhouse-based experimentation is often the first step for understanding the contribution of root-associated microbiota—whether natural or engineered—to plant phenotypes. In this protocol, we describe methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant. The protocol involves removal of the native seed microbiome followed by inoculation of new microorganisms; separate protocols are provided for inoculations from pure culture, from soil slurry, or by mixing in live soil. These protocols cover the most common methods for manipulating the maize microbiome in soil-grown plants in the greenhouse. The methods outlined will ultimately result in rhizosphere microbial assemblages with varying degrees of microbial diversity, ranging from low diversity (individual strain and synthetic community [SynCom] inoculation) to high diversity (percent live inoculation), with the slurry inoculation method representing an “intermediate diversity” treatment."
-#> 
-#> [[1]]$data$publicationTitle
-#> [1] "Cold Spring Harbor Protocols"
-#> 
-#> [[1]]$data$volume
-#> [1] ""
-#> 
-#> [[1]]$data$issue
-#> [1] ""
-#> 
-#> [[1]]$data$pages
-#> [1] ""
-#> 
-#> [[1]]$data$date
-#> [1] "2024-09-05"
-#> 
-#> [[1]]$data$series
-#> [1] ""
-#> 
-#> [[1]]$data$seriesTitle
-#> [1] ""
-#> 
-#> [[1]]$data$seriesText
-#> [1] ""
-#> 
-#> [[1]]$data$journalAbbreviation
-#> [1] "Cold Spring Harb Protoc"
-#> 
-#> [[1]]$data$language
-#> [1] "en"
-#> 
-#> [[1]]$data$DOI
-#> [1] "10.1101/pdb.prot108584"
-#> 
-#> [[1]]$data$ISSN
-#> [1] "1940-3402, 1559-6095"
-#> 
-#> [[1]]$data$shortTitle
-#> [1] ""
-#> 
-#> [[1]]$data$url
-#> [1] "http://cshprotocols.cshlp.org/content/early/2024/09/05/pdb.prot108584"
-#> 
-#> [[1]]$data$accessDate
-#> [1] "2024-09-19T04:03:28Z"
-#> 
-#> [[1]]$data$archive
-#> [1] ""
-#> 
-#> [[1]]$data$archiveLocation
-#> [1] ""
-#> 
-#> [[1]]$data$libraryCatalog
-#> [1] "cshprotocols.cshlp.org"
-#> 
-#> [[1]]$data$callNumber
-#> [1] ""
-#> 
-#> [[1]]$data$rights
-#> [1] ""
-#> 
-#> [[1]]$data$extra
-#> [1] "Publisher: Cold Spring Harbor Laboratory Press\nPMID: 39237453\nTLDR: Methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant and resulting in rhizosphere microbial assemblages with varying degrees of microbial diversity are described.\ntitleTranslation: 操控玉米微生物群系"
-#> 
-#> [[1]]$data$tags
-#> list()
-#> 
-#> [[1]]$data$collections
-#> [[1]]$data$collections[[1]]
-#> [1] "NVIWASQD"
-#> 
-#> 
-#> [[1]]$data$relations
-#> named list()
-#> 
-#> [[1]]$data$dateAdded
-#> [1] "2024-09-19T04:03:28Z"
-#> 
-#> [[1]]$data$dateModified
-#> [1] "2024-10-31T05:55:35Z"
+#> [1] 4251
 ```
 
 ### 搜索
@@ -454,10 +76,34 @@ num_all_items(client)
 # 获取所有保存的搜索
 searches <- get_searches(client)
 
-search_key = searches[[1]]$key
+search_key = searches$key[1]
 
 # 获取特定的搜索
 search <- get_search(client, search_key)
+str(search)
+#> List of 5
+#>  $ key    : chr "ZS5NHLXC"
+#>  $ version: int 21528
+#>  $ library:List of 4
+#>   ..$ type : chr "user"
+#>   ..$ id   : int 62236
+#>   ..$ name : chr "gaoch"
+#>   ..$ links:List of 1
+#>   .. ..$ alternate:List of 2
+#>   .. .. ..$ href: chr "https://www.zotero.org/springgao"
+#>   .. .. ..$ type: chr "text/html"
+#>  $ links  :List of 1
+#>   ..$ self:List of 2
+#>   .. ..$ href: chr "https://api.zotero.org/users/62236/searches/ZS5NHLXC"
+#>   .. ..$ type: chr "application/json"
+#>  $ data   :List of 4
+#>   ..$ key       : chr "ZS5NHLXC"
+#>   ..$ version   : int 21528
+#>   ..$ name      : chr "Microsoft Word.app"
+#>   ..$ conditions:'data.frame':   1 obs. of  3 variables:
+#>   .. ..$ condition: chr "title"
+#>   .. ..$ operator : chr "contains"
+#>   .. ..$ value    : chr ""
 ```
 
 下面的操作需要API key有写权限。
@@ -505,7 +151,7 @@ trash_tags <- get_items_trash_tags(client)
 
 ``` r
 # 假设我们有一个条目的key
-item_key <- items[[1]]$key
+item_key <- items$key[1]
 
 # 获取该条目的标签
 item_tags <- get_item_tags(client, item_key)

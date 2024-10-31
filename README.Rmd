@@ -13,12 +13,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-# zoteroR
+# Zotero in R
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml)
+[![Codecov test coverage](https://codecov.io/gh/gaospecial/zoteroR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/gaospecial/zoteroR?branch=main)
+[![CRAN status](https://www.r-pkg.org/badges/version/zoteroR)](https://CRAN.R-project.org/package=zoteroR)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/gaospecial/zoteroR/workflows/R-CMD-check/badge.svg)](https://github.com/gaospecial/zoteroR/actions)
+[![](https://img.shields.io/github/languages/code-size/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR)
+[![](https://img.shields.io/github/last-commit/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR/commits/main)
 <!-- badges: end -->
 
-The goal of zoteroR is to provide a convenient interface to the Zotero API in R.
+The goal of `zoteroR` is to provide a convenient interface to the Zotero API in R.
 
 ## Installation
 
@@ -50,6 +58,8 @@ client <- zotero_client(
 ```{r}
 # Get 10 items
 items <- get_items(client, limit = 10)
+dim(items)
+colnames(items)
 ```
 
 ### 获取项目数量
@@ -68,10 +78,11 @@ num_all_items(client)
 # 获取所有保存的搜索
 searches <- get_searches(client)
 
-search_key = searches[[1]]$key
+search_key = searches$key[1]
 
 # 获取特定的搜索
 search <- get_search(client, search_key)
+str(search)
 ```
 
 下面的操作需要API key有写权限。
@@ -101,7 +112,7 @@ delete_search(client, search_key)
 
 获取标签：
 
-```{r}
+```{r eval = FALSE}
 # 获取所有标签
 tags <- get_tags(client)
 
@@ -117,9 +128,9 @@ trash_tags <- get_items_trash_tags(client)
 
 获取特定条目或集合的标签：
 
-```{r}
+```{r eval = FALSE}
 # 假设我们有一个条目的key
-item_key <- items[[1]]$key
+item_key <- items$key[1]
 
 # 获取该条目的标签
 item_tags <- get_item_tags(client, item_key)
@@ -140,14 +151,14 @@ if (length(collections) > 0) {
 
 获取特殊位置的标签：
 
-```{r}
+```{r eval = FALSE}
 # 获取"我的出版物"中的标签
 publication_tags <- get_publications_tags(client)
 ```
 
 ### 集合操作
 
-```{r}
+```{r eval = FALSE}
 # 获取所有集合
 collections <- get_collections(client)
 
@@ -248,7 +259,7 @@ result <- create_attachment(client,
 
 获取版本信息：
 
-```{r}
+```{r eval = FALSE}
 # 获取最后修改的版本号
 last_version <- get_last_modified_version(client)
 
@@ -264,7 +275,7 @@ collection_versions <- get_collection_versions(client)
 
 获取删除的内容：
 
-```{r}
+```{r eval = FALSE}
 # 获取从特定版本之后删除的内容
 if (last_version > 0) {
   deleted <- get_deleted(client, since = last_version - 100)
@@ -312,7 +323,7 @@ result <- update_items_version(client,
 
 获取群组和出版物：
 
-```{r}
+```{r eval = FALSE}
 # 获取用户可访问的群组
 groups <- get_groups(client)
 
@@ -324,7 +335,7 @@ publications <- get_publications(client)
 
 获取特定条目：
 
-```{r}
+```{r eval = FALSE}
 # 获取前10个条目的key
 items <- get_items(client, limit = 10)
 keys <- sapply(items, function(x) x$key)
