@@ -13,7 +13,6 @@ coverage](https://codecov.io/gh/gaospecial/zoteroR/branch/main/graph/badge.svg)]
 status](https://www.r-pkg.org/badges/version/zoteroR)](https://CRAN.R-project.org/package=zoteroR)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/gaospecial/zoteroR/workflows/R-CMD-check/badge.svg)](https://github.com/gaospecial/zoteroR/actions)
 [![](https://img.shields.io/github/languages/code-size/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR)
 [![](https://img.shields.io/github/last-commit/gaospecial/zoteroR.svg)](https://github.com/gaospecial/zoteroR/commits/main)
 <!-- badges: end -->
