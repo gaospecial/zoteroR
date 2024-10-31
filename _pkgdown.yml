@@ -1,4 +1,93 @@
 url: https://gaospecial.github.io/zoteroR/
 template:
   bootstrap: 5
+  
+reference:
+- title: "Client"
+  desc: "Functions for initializing Zotero API client"
+  contents:
+  - zotero_client
+  
+- title: "Items"
+  desc: "Functions for managing items"
+  contents:
+  - get_items
+  - item
+  - children
+  - trash
+  - num_top_items
+  - num_all_items
+
+- title: "Collections"
+  desc: "Functions for managing collections"
+  contents:
+  - matches("collection")
+
+
+- title: "Tags"
+  desc: "Functions for managing tags"
+  contents:
+  - starts_with("get_tag")
+  - contains("tag")
+  - get_publications_tags
+
+- title: "Files & Attachments"
+  desc: "Functions for managing files and attachments"
+  contents:
+  - get_file
+  - download_file
+  - create_attachment
+
+- title: "Search"
+  desc: "Functions for managing saved searches"
+  contents:
+  - starts_with("get_search")
+  - create_search
+  - delete_search
+
+- title: "Syncing & Versions"
+  desc: "Functions for syncing and version control"
+  contents:
+  - get_item_versions
+  - get_collection_versions
+  - get_last_modified_version
+  - get_deleted
+  - update_item_version
+  - update_items_version
+
+- title: "Groups & Publications"
+  desc: "Functions for accessing groups and publications"
+  contents:
+  - get_groups
+  - get_publications
+
+- title: "Batch Operations"
+  desc: "Functions for batch operations"
+  contents:
+  - get_item_subset
+  - get_all_items
+  - get_all_collections
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
+  components:
+    reference:
+      text: Reference
+      href: reference/index.html
+    github:
+      icon: fab fa-github
+      href: https://github.com/gaospecial/zoteroR
+    articles:
+      text: Articles
+      menu:
+      - text: Getting Started
+        href: articles/zoteroR.html
+
+articles:
+- title: All vignettes
+  desc: ~
+  contents:
+  - '`zoteroR`'
 
