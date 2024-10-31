@@ -63,12 +63,31 @@ get_items <- function(client, limit = 10, start = 0, query = NULL,
 #' )
 #' 
 #' # Get total number of top-level items
-#' total <- num_items(client)
+#' total <- num_top_items(client)
 #' }
 #' @export
 num_top_items <- function(client) {
   endpoint <- sprintf("/%s/%s/items/top", client$library_type, client$library_id)
-  make_request(client, endpoint, query = list(limit = 1))
+  url <- file.path(client$base_url, endpoint)
+  response <- httr::GET(url,
+                       httr::add_headers(
+                         "Zotero-API-Version" = "3",
+                         "User-Agent" = "zoteroR - R client for Zotero API",
+                         "Authorization" = paste("Bearer", client$api_key)
+                       ),
+                       query = list(
+                         limit = 1,
+                         format = "json",
+                         locale = client$locale,
+                         v = 3
+                       ))
+  httr::stop_for_status(response)
+  # Get total from response headers
+  total <- response$headers$`total-results`
+  if (is.null(total)) {
+    return(0)
+  }
+  as.integer(total)
 }
 
 #' Get total number of all items in the library
@@ -85,13 +104,30 @@ num_top_items <- function(client) {
 #' )
 #' 
 #' # Get total number of all items
-#' total <- count_items(client)
+#' total <- num_all_items(client)
 #' }
 #' @export
 num_all_items <- function(client) {
   endpoint <- sprintf("/%s/%s/items", client$library_type, client$library_id)
-  response <- make_request(client, endpoint, query = list(limit = 1))
-  response
+  url <- file.path(client$base_url, endpoint)
+  response <- httr::GET(url,
+                       httr::add_headers(
+                         "Zotero-API-Version" = "3",
+                         "User-Agent" = "zoteroR - R client for Zotero API",
+                         "Authorization" = paste("Bearer", client$api_key)
+                       ),
+                       query = list(
+                         limit = 1,
+                         format = "json",
+                         locale = client$locale,
+                         v = 3
+                       ))
+  httr::stop_for_status(response)  # Get total from response headers
+  total <- response$headers$`total-results`
+  if (is.null(total)) {
+    return(0)
+  }
+  as.integer(total)
 }
 
 
