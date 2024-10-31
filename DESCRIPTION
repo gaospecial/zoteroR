@@ -6,16 +6,13 @@ Authors@R:
 Description: An R package that provides interface to Zotero API. It allows users to 
     interact with Zotero libraries, including reading and writing items, 
     collections, and tags.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     httr,
     jsonlite,
-    magrittr,
-    purrr,
-    dplyr,
     digest
 Suggests: 
     testthat (>= 3.0.0)
