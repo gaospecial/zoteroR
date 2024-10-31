@@ -1,2 +1,4 @@
 ^zoteroR\.Rproj$
 ^\.Rproj\.user$
+pyzotero
+^README\.Rmd$
