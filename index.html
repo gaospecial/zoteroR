@@ -52,11 +52,11 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="zoteror">zoteroR<a class="anchor" aria-label="anchor" href="#zoteror"></a>
+<div class="page-header"><h1 id="zotero-in-r">Zotero in R<a class="anchor" aria-label="anchor" href="#zotero-in-r"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
-<p>The goal of zoteroR is to provide a convenient interface to the Zotero API in R.</p>
+
+<p>The goal of <code>zoteroR</code> is to provide a convenient interface to the Zotero API in R.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -86,7 +86,11 @@
 </h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get 10 items</span></span>
-<span><span class="va">items</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_items.html">get_items</a></span><span class="op">(</span><span class="va">client</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">items</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_items.html">get_items</a></span><span class="op">(</span><span class="va">client</span>, limit <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">items</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 10  6</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">items</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "key"     "version" "library" "links"   "meta"    "data"</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="获取项目数量">获取项目数量<a class="anchor" aria-label="anchor" href="#%E8%8E%B7%E5%8F%96%E9%A1%B9%E7%9B%AE%E6%95%B0%E9%87%8F"></a>
@@ -94,405 +98,11 @@
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get total number of top-level items in the library</span></span>
 <span><span class="fu"><a href="reference/num_top_items.html">num_top_items</a></span><span class="op">(</span><span class="va">client</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [[1]]$key</span></span>
-<span><span class="co">#&gt; [1] "Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$version</span></span>
-<span><span class="co">#&gt; [1] 21936</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library</span></span>
-<span><span class="co">#&gt; [[1]]$library$type</span></span>
-<span><span class="co">#&gt; [1] "user"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$id</span></span>
-<span><span class="co">#&gt; [1] 62236</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$name</span></span>
-<span><span class="co">#&gt; [1] "gaoch"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$links</span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate</span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate$href</span></span>
-<span><span class="co">#&gt; [1] "https://www.zotero.org/springgao"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate$type</span></span>
-<span><span class="co">#&gt; [1] "text/html"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links</span></span>
-<span><span class="co">#&gt; [[1]]$links$self</span></span>
-<span><span class="co">#&gt; [[1]]$links$self$href</span></span>
-<span><span class="co">#&gt; [1] "https://api.zotero.org/users/62236/items/Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$self$type</span></span>
-<span><span class="co">#&gt; [1] "application/json"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate</span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate$href</span></span>
-<span><span class="co">#&gt; [1] "https://www.zotero.org/springgao/items/Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate$type</span></span>
-<span><span class="co">#&gt; [1] "text/html"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta</span></span>
-<span><span class="co">#&gt; [[1]]$meta$creatorSummary</span></span>
-<span><span class="co">#&gt; [1] "Raglin et al."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta$parsedDate</span></span>
-<span><span class="co">#&gt; [1] "2024-09-05"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta$numChildren</span></span>
-<span><span class="co">#&gt; [1] 2</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data</span></span>
-<span><span class="co">#&gt; [[1]]$data$key</span></span>
-<span><span class="co">#&gt; [1] "Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$version</span></span>
-<span><span class="co">#&gt; [1] 21936</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$itemType</span></span>
-<span><span class="co">#&gt; [1] "journalArticle"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$title</span></span>
-<span><span class="co">#&gt; [1] "Manipulating the Maize (Zea mays) Microbiome"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Sierra S."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Raglin"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Alonso"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Favela"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Daniel"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Laspisa"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Jason G."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Wallace"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$abstractNote</span></span>
-<span><span class="co">#&gt; [1] "Maize (Zea mays) is a multifaceted cereal grass used globally for nutrition, animal feed, food processing, and biofuels, and a model system in genetics research. Studying the maize microbiome sometimes requires its manipulation to identify the contributions of specific taxa and ecological traits (i.e., diversity, richness, network structure) to maize growth and physiology. Due to regulatory constraints on applying engineered microorganisms in field settings, greenhouse-based experimentation is often the first step for understanding the contribution of root-associated microbiota—whether natural or engineered—to plant phenotypes. In this protocol, we describe methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant. The protocol involves removal of the native seed microbiome followed by inoculation of new microorganisms; separate protocols are provided for inoculations from pure culture, from soil slurry, or by mixing in live soil. These protocols cover the most common methods for manipulating the maize microbiome in soil-grown plants in the greenhouse. The methods outlined will ultimately result in rhizosphere microbial assemblages with varying degrees of microbial diversity, ranging from low diversity (individual strain and synthetic community [SynCom] inoculation) to high diversity (percent live inoculation), with the slurry inoculation method representing an “intermediate diversity” treatment."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$publicationTitle</span></span>
-<span><span class="co">#&gt; [1] "Cold Spring Harbor Protocols"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$volume</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$issue</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$pages</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$date</span></span>
-<span><span class="co">#&gt; [1] "2024-09-05"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$series</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$seriesTitle</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$seriesText</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$journalAbbreviation</span></span>
-<span><span class="co">#&gt; [1] "Cold Spring Harb Protoc"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$language</span></span>
-<span><span class="co">#&gt; [1] "en"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$DOI</span></span>
-<span><span class="co">#&gt; [1] "10.1101/pdb.prot108584"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$ISSN</span></span>
-<span><span class="co">#&gt; [1] "1940-3402, 1559-6095"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$shortTitle</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$url</span></span>
-<span><span class="co">#&gt; [1] "http://cshprotocols.cshlp.org/content/early/2024/09/05/pdb.prot108584"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$accessDate</span></span>
-<span><span class="co">#&gt; [1] "2024-09-19T04:03:28Z"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$archive</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$archiveLocation</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$libraryCatalog</span></span>
-<span><span class="co">#&gt; [1] "cshprotocols.cshlp.org"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$callNumber</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$rights</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$extra</span></span>
-<span><span class="co">#&gt; [1] "Publisher: Cold Spring Harbor Laboratory Press\nPMID: 39237453\nTLDR: Methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant and resulting in rhizosphere microbial assemblages with varying degrees of microbial diversity are described.\ntitleTranslation: 操控玉米微生物群系"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$tags</span></span>
-<span><span class="co">#&gt; list()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$collections</span></span>
-<span><span class="co">#&gt; [[1]]$data$collections[[1]]</span></span>
-<span><span class="co">#&gt; [1] "NVIWASQD"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$relations</span></span>
-<span><span class="co">#&gt; named list()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$dateAdded</span></span>
-<span><span class="co">#&gt; [1] "2024-09-19T04:03:28Z"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$dateModified</span></span>
-<span><span class="co">#&gt; [1] "2024-10-31T05:55:35Z"</span></span>
+<span><span class="co">#&gt; [1] 2136</span></span>
 <span></span>
 <span><span class="co"># Get total number of items in a collection</span></span>
 <span><span class="fu"><a href="reference/num_all_items.html">num_all_items</a></span><span class="op">(</span><span class="va">client</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [[1]]$key</span></span>
-<span><span class="co">#&gt; [1] "Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$version</span></span>
-<span><span class="co">#&gt; [1] 21936</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library</span></span>
-<span><span class="co">#&gt; [[1]]$library$type</span></span>
-<span><span class="co">#&gt; [1] "user"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$id</span></span>
-<span><span class="co">#&gt; [1] 62236</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$name</span></span>
-<span><span class="co">#&gt; [1] "gaoch"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$links</span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate</span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate$href</span></span>
-<span><span class="co">#&gt; [1] "https://www.zotero.org/springgao"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$library$links$alternate$type</span></span>
-<span><span class="co">#&gt; [1] "text/html"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links</span></span>
-<span><span class="co">#&gt; [[1]]$links$self</span></span>
-<span><span class="co">#&gt; [[1]]$links$self$href</span></span>
-<span><span class="co">#&gt; [1] "https://api.zotero.org/users/62236/items/Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$self$type</span></span>
-<span><span class="co">#&gt; [1] "application/json"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate</span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate$href</span></span>
-<span><span class="co">#&gt; [1] "https://www.zotero.org/springgao/items/Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$links$alternate$type</span></span>
-<span><span class="co">#&gt; [1] "text/html"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta</span></span>
-<span><span class="co">#&gt; [[1]]$meta$creatorSummary</span></span>
-<span><span class="co">#&gt; [1] "Raglin et al."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta$parsedDate</span></span>
-<span><span class="co">#&gt; [1] "2024-09-05"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$meta$numChildren</span></span>
-<span><span class="co">#&gt; [1] 2</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data</span></span>
-<span><span class="co">#&gt; [[1]]$data$key</span></span>
-<span><span class="co">#&gt; [1] "Z5NE7NV2"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$version</span></span>
-<span><span class="co">#&gt; [1] 21936</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$itemType</span></span>
-<span><span class="co">#&gt; [1] "journalArticle"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$title</span></span>
-<span><span class="co">#&gt; [1] "Manipulating the Maize (Zea mays) Microbiome"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Sierra S."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[1]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Raglin"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Alonso"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[2]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Favela"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Daniel"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[3]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Laspisa"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]</span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$creatorType</span></span>
-<span><span class="co">#&gt; [1] "author"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$firstName</span></span>
-<span><span class="co">#&gt; [1] "Jason G."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$creators[[4]]$lastName</span></span>
-<span><span class="co">#&gt; [1] "Wallace"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$abstractNote</span></span>
-<span><span class="co">#&gt; [1] "Maize (Zea mays) is a multifaceted cereal grass used globally for nutrition, animal feed, food processing, and biofuels, and a model system in genetics research. Studying the maize microbiome sometimes requires its manipulation to identify the contributions of specific taxa and ecological traits (i.e., diversity, richness, network structure) to maize growth and physiology. Due to regulatory constraints on applying engineered microorganisms in field settings, greenhouse-based experimentation is often the first step for understanding the contribution of root-associated microbiota—whether natural or engineered—to plant phenotypes. In this protocol, we describe methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant. The protocol involves removal of the native seed microbiome followed by inoculation of new microorganisms; separate protocols are provided for inoculations from pure culture, from soil slurry, or by mixing in live soil. These protocols cover the most common methods for manipulating the maize microbiome in soil-grown plants in the greenhouse. The methods outlined will ultimately result in rhizosphere microbial assemblages with varying degrees of microbial diversity, ranging from low diversity (individual strain and synthetic community [SynCom] inoculation) to high diversity (percent live inoculation), with the slurry inoculation method representing an “intermediate diversity” treatment."</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$publicationTitle</span></span>
-<span><span class="co">#&gt; [1] "Cold Spring Harbor Protocols"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$volume</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$issue</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$pages</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$date</span></span>
-<span><span class="co">#&gt; [1] "2024-09-05"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$series</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$seriesTitle</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$seriesText</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$journalAbbreviation</span></span>
-<span><span class="co">#&gt; [1] "Cold Spring Harb Protoc"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$language</span></span>
-<span><span class="co">#&gt; [1] "en"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$DOI</span></span>
-<span><span class="co">#&gt; [1] "10.1101/pdb.prot108584"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$ISSN</span></span>
-<span><span class="co">#&gt; [1] "1940-3402, 1559-6095"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$shortTitle</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$url</span></span>
-<span><span class="co">#&gt; [1] "http://cshprotocols.cshlp.org/content/early/2024/09/05/pdb.prot108584"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$accessDate</span></span>
-<span><span class="co">#&gt; [1] "2024-09-19T04:03:28Z"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$archive</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$archiveLocation</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$libraryCatalog</span></span>
-<span><span class="co">#&gt; [1] "cshprotocols.cshlp.org"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$callNumber</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$rights</span></span>
-<span><span class="co">#&gt; [1] ""</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$extra</span></span>
-<span><span class="co">#&gt; [1] "Publisher: Cold Spring Harbor Laboratory Press\nPMID: 39237453\nTLDR: Methods to inoculate maize with a specific microbiome as a tool for understanding the microbiota's influence on its host plant and resulting in rhizosphere microbial assemblages with varying degrees of microbial diversity are described.\ntitleTranslation: 操控玉米微生物群系"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$tags</span></span>
-<span><span class="co">#&gt; list()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$collections</span></span>
-<span><span class="co">#&gt; [[1]]$data$collections[[1]]</span></span>
-<span><span class="co">#&gt; [1] "NVIWASQD"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$relations</span></span>
-<span><span class="co">#&gt; named list()</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$dateAdded</span></span>
-<span><span class="co">#&gt; [1] "2024-09-19T04:03:28Z"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; [[1]]$data$dateModified</span></span>
-<span><span class="co">#&gt; [1] "2024-10-31T05:55:35Z"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 4251</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="搜索">搜索<a class="anchor" aria-label="anchor" href="#%E6%90%9C%E7%B4%A2"></a>
@@ -501,10 +111,34 @@
 <code class="sourceCode R"><span><span class="co"># 获取所有保存的搜索</span></span>
 <span><span class="va">searches</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_searches.html">get_searches</a></span><span class="op">(</span><span class="va">client</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">search_key</span> <span class="op">=</span> <span class="va">searches</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">key</span></span>
+<span><span class="va">search_key</span> <span class="op">=</span> <span class="va">searches</span><span class="op">$</span><span class="va">key</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># 获取特定的搜索</span></span>
-<span><span class="va">search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_search.html">get_search</a></span><span class="op">(</span><span class="va">client</span>, <span class="va">search_key</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">search</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_search.html">get_search</a></span><span class="op">(</span><span class="va">client</span>, <span class="va">search_key</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">search</span><span class="op">)</span></span>
+<span><span class="co">#&gt; List of 5</span></span>
+<span><span class="co">#&gt;  $ key    : chr "ZS5NHLXC"</span></span>
+<span><span class="co">#&gt;  $ version: int 21528</span></span>
+<span><span class="co">#&gt;  $ library:List of 4</span></span>
+<span><span class="co">#&gt;   ..$ type : chr "user"</span></span>
+<span><span class="co">#&gt;   ..$ id   : int 62236</span></span>
+<span><span class="co">#&gt;   ..$ name : chr "gaoch"</span></span>
+<span><span class="co">#&gt;   ..$ links:List of 1</span></span>
+<span><span class="co">#&gt;   .. ..$ alternate:List of 2</span></span>
+<span><span class="co">#&gt;   .. .. ..$ href: chr "https://www.zotero.org/springgao"</span></span>
+<span><span class="co">#&gt;   .. .. ..$ type: chr "text/html"</span></span>
+<span><span class="co">#&gt;  $ links  :List of 1</span></span>
+<span><span class="co">#&gt;   ..$ self:List of 2</span></span>
+<span><span class="co">#&gt;   .. ..$ href: chr "https://api.zotero.org/users/62236/searches/ZS5NHLXC"</span></span>
+<span><span class="co">#&gt;   .. ..$ type: chr "application/json"</span></span>
+<span><span class="co">#&gt;  $ data   :List of 4</span></span>
+<span><span class="co">#&gt;   ..$ key       : chr "ZS5NHLXC"</span></span>
+<span><span class="co">#&gt;   ..$ version   : int 21528</span></span>
+<span><span class="co">#&gt;   ..$ name      : chr "Microsoft Word.app"</span></span>
+<span><span class="co">#&gt;   ..$ conditions:'data.frame':   1 obs. of  3 variables:</span></span>
+<span><span class="co">#&gt;   .. ..$ condition: chr "title"</span></span>
+<span><span class="co">#&gt;   .. ..$ operator : chr "contains"</span></span>
+<span><span class="co">#&gt;   .. ..$ value    : chr ""</span></span></code></pre></div>
 <p>下面的操作需要API key有写权限。</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 创建新的搜索</span></span>
@@ -545,7 +179,7 @@
 <p>获取特定条目或集合的标签：</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># 假设我们有一个条目的key</span></span>
-<span><span class="va">item_key</span> <span class="op">&lt;-</span> <span class="va">items</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">key</span></span>
+<span><span class="va">item_key</span> <span class="op">&lt;-</span> <span class="va">items</span><span class="op">$</span><span class="va">key</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
 <span></span>
 <span><span class="co"># 获取该条目的标签</span></span>
 <span><span class="va">item_tags</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_item_tags.html">get_item_tags</a></span><span class="op">(</span><span class="va">client</span>, <span class="va">item_key</span><span class="op">)</span></span>
@@ -777,7 +411,19 @@
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/gaospecial/zoteroR/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/gaospecial/zoteroR/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://app.codecov.io/gh/gaospecial/zoteroR?branch=main" class="external-link"><img src="https://codecov.io/gh/gaospecial/zoteroR/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://CRAN.R-project.org/package=zoteroR" class="external-link"><img src="https://www.r-pkg.org/badges/version/zoteroR" alt="CRAN status"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://github.com/gaospecial/zoteroR/actions" class="external-link"><img src="https://github.com/gaospecial/zoteroR/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/gaospecial/zoteroR" class="external-link"><img src="https://img.shields.io/github/languages/code-size/gaospecial/zoteroR.svg"></a></li>
+<li><a href="https://github.com/gaospecial/zoteroR/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/gaospecial/zoteroR.svg"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
